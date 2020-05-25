@@ -1,0 +1,5 @@
+mode_modules
+package-lock.json
+.env
+.env.test
+config

@@ -1,0 +1,28 @@
+// server management
+express
+
+// 프론트와 통신
+cors
+
+// Body-parser
+body-parser
+
+// cookie-parser
+// axios
+
+// jwt
+jsonwebtoken
+bcrypt
+
+// email 승인
+nodemailer
+
+// formdata 전송
+multer
+multer-s3
+
+// s3 파일 업로드
+aws-sdk
+
+// 소켓 통신
+socket.io
