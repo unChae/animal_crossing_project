@@ -4,7 +4,7 @@ const response = require("../../utils/u_res");
 // models
 const Board = require("../../models").Board;
 
-var create = function(req, res) {
+let create = (req, res) => {
     console.log(req.body);
     const { bo_us_id, bo_title, bo_content, bo_trade_value, bo_category, bo_cost, bo_cost_selector, bo_thumbnail } = req.body;
 
@@ -14,7 +14,7 @@ var create = function(req, res) {
             bo_title,
             bo_content,
             bo_category: parseInt(bo_category),
-            bo_trade: parseInt(bo_trade_value),
+            bo_trade_value: parseInt(bo_trade_value),
             bo_thumbnail,
             bo_cost: parseInt(bo_cost),
             bo_cost_selector: parseInt(bo_cost_selector)

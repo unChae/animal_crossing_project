@@ -2,8 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     let model = sequelize.define('category', { 
         ca_id: { 
             type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
+            primaryKey: true
         }, 
         ca_contents: {
             type: DataTypes.STRING(20)

@@ -1,10 +1,12 @@
+// call controller
 const ctrl = require('../api/c_auth');
 
-module.exports = (router, io) => {
-    // router 로그인 API
-    router.post('/login', ctrl.login(io));
+module.exports = (router) => {
     
-    // router 회원가입 API
+    // 로그인
+    router.post('/login', ctrl.login);
+    
+    // 회원가입
     router.post('/register', ctrl.register);
     
     // 이메일 인증
@@ -16,5 +18,10 @@ module.exports = (router, io) => {
     // 토큰 비교
     router.post('/token_check', ctrl.token_check);
 
+    // 임시 비밀번호 발행
+    router.get('/set_temp_password', ctrl.set_temp_password);
+    
+    router.post('/update_password', ctrl.update_password);
+    
     return router;
 };
