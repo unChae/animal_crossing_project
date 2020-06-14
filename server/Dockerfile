@@ -8,6 +8,7 @@ RUN npm install
 
 COPY . .
 
+EXPOSE 443
 EXPOSE 80
 
 CMD [ "node", "app.js" ]
