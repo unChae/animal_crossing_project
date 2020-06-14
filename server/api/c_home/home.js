@@ -13,6 +13,7 @@ const Category = models.Category;
 
 let home = async (req, res) => {
     let {offset, ca_id, bo_trade_value} = req.body;
+    
     let check = false;
     let next_offset;
     if(!bo_trade_value) {
@@ -28,10 +29,12 @@ let home = async (req, res) => {
             raw: true,
             order: [ [ 'createdAt', 'DESC' ]]
         })
-        .catch((error) => {
+
+        try{
+            offset = offset[0].bo_id
+        }catch(error) {
             response(res, 409, false, "[에러]게시물이 존재하지 않습니다", error);
-        })
-        offset = offset[0].bo_id
+        }
         check = true;
     }
     

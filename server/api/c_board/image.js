@@ -31,7 +31,7 @@ let image = (req, res) => {
                 response(res, 500, false, "[에러] 서버문제로 이미지 파일 등록을 실패했습니다");
             })
             // 이미지를 저장하다 썸네일과 순번이 같아지면 썸네일 컬럼에 직접적인 s3 이미지 주소값으로 대체
-            if(i === bo_thumbnail){
+            if(i == parseInt(bo_thumbnail) -1){
                 Board.update({
                     bo_thumbnail: location
                 }, {

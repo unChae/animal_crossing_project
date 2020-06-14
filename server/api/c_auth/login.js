@@ -37,8 +37,10 @@ let login = async (req, res) => {
                 us_thumbnail: user.us_thumbnail,
                 us_nickname: user.us_nickname,
                 us_islandname: user.us_islandname,
+                us_island_selector: user.us_island_selector,
                 us_code: user.us_code,
-                us_grant: user.us_grant
+                us_grant: user.us_grant,
+                createdAt: user.createdAt
             };
             
             // user가 웹으로 접근시 토큰을 유지 시켜줌

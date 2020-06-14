@@ -21,9 +21,9 @@ const http = require('http');
 const https = require('https');
 
 // 인증서 호출
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/server.anicro.org/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/server.anicro.org/cert.pem', 'utf8');
-const ca = fs.readFileSync('/etc/letsencrypt/live/server.anicro.org/chain.pem', 'utf8');
+const privateKey = fs.readFileSync('./config/ssl/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('./config/ssl/cert.pem', 'utf8');
+const ca = fs.readFileSync('./config/ssl/chain.pem', 'utf8');
 
 const credentials = {
 	key: privateKey,

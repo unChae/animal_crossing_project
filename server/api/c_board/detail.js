@@ -18,7 +18,7 @@ let detail = async (req, res) => {
         where: {bo_id},
         include: [{
             model: User,
-            attributes: ['us_id', 'us_nickname', 'us_islandname', 'us_thumbnail', 'us_grant' ],
+            attributes: ['us_id', 'us_nickname', 'us_islandname', 'us_thumbnail', 'us_grant', 'us_island_selector', 'createdAt' ],
             include: [{
                 model: Review,
                 attributes: ['rv_content', 'rv_rate', 'createdAt'],

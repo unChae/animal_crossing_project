@@ -63,7 +63,8 @@ module.exports = (sequelize, DataTypes) => {
         }, 
         us_island_selector: {
             type: DataTypes.INTEGER,
-            defalutValue: 0
+            defalutValue: 0,
+            allowNull: false,
         },
         us_code: { 
             type: DataTypes.STRING(100),
@@ -99,8 +100,10 @@ module.exports = (sequelize, DataTypes) => {
     }, 
     {
         tableName: "user",
-        timestamps: false
+        timestamps: true
     }); 
     
     return model;
 }
+
+// us_island_selector , us_access defalutValue 0 적용 x

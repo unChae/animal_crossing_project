@@ -11,7 +11,6 @@ let category = async (req, res) => {
     .catch((error) => {
         response(res, 500, false, "[에러]서버 오류로 카테고리 값을 받아오지 못했습니다", error);
     });
-    
     response(res, 200, true, "[완료]카테고리 반환", category);
 }
 

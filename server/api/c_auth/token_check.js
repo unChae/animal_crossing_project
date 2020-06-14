@@ -25,12 +25,14 @@ var token_check = async (req, res) => {
         response(res, 409, false, '[에러]토큰값과 id가 맞지 않아 계정 정보 반환 실패');
     } else {
         const us_info = {
-          us_thumbnail: user.us_thumbnail,
-          us_nickname: user.us_nickname,
-          us_islandname: user.us_islandname,
-          us_code: user.us_code,
-          us_id: user.us_id,
-          us_grant: user.us_grant
+            us_thumbnail: user.us_thumbnail,
+            us_nickname: user.us_nickname,
+            us_islandname: user.us_islandname,
+            us_island_selector: user.us_island_selector,
+            us_code: user.us_code,
+            us_id: user.us_id,
+            us_grant: user.us_grant,
+            createdAt: user.createdAt
         };
         response(res, 200, true, '[완료]토큰 값 일치', us_info);
     }
