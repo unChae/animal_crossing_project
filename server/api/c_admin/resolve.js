@@ -28,6 +28,10 @@ let resolve = async (req, res) => {
             response(res, 500, false, '[오류] 1:1문의를 받아올 수 없습니다.');
         });
         
+        await Blacklist.destroy({
+            where: {bl_id: report.re_bl_id}
+        })
+        
         let us_id = blacklist.bl_victim_us_id;
         let us_grant = blacklist.bl_us_grant;
         

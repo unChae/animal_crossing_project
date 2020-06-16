@@ -12,7 +12,7 @@ const User = models.User;
 let change_thumbnail = async (req, res) => {
     
     let files = req.files;
-    let us_id = req.headers.us_id;
+    let us_id = req.body.us_id;
     
     if(files.length){
         let location = files[0].Location;

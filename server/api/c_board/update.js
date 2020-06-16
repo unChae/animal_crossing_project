@@ -15,7 +15,7 @@ let update = async (req, res) => {
     })
     
     if(image) {
-        delete_s3_folder("deac-project", bo_id);
+        delete_s3_folder(bo_id);
     }
     
     Image.destroy({

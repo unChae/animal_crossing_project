@@ -16,7 +16,7 @@ let get_us_id = async (us_id, ro_id) => {
         }
     })
     let ch_receive_us_id;
-
+    
     if(chat[0].ch_send_us_id == us_id) {
         ch_receive_us_id = chat[0].ch_receive_us_id;
     } else {

@@ -9,9 +9,8 @@ const Board = models.Board;
 
 let image = (req, res) => {
     let files = req.files;
-    let bo_id = req.headers.bo_id;
+    let bo_id = req.body.bo_id;
     let bo_thumbnail;
-    
     global.i = 0;
     // 게시물에서 thumbnail 값을 찾음
     Board.findOne({
@@ -22,7 +21,8 @@ let image = (req, res) => {
         for(var i = 0; i < files.length; i++) {
             console.log("files: ", files);
             // image 테이블에 이미지 주소와 게시물 id 저장
-            let location = files[i].Location.replace(/deac-project.s3.ap-northeast-2.amazonaws.com/, "anicro.org");
+            let location = files[i].Location
+            console.log(location);
             Image.create({
                 im_bo_id: bo_id,
                 im_location: location

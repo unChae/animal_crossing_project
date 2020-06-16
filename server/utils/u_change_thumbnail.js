@@ -13,14 +13,12 @@ const models = require("../models");
 const User = models.User;
 
 let params = {
-    
-    Bucket: 'deac-project',
+    Bucket: 'web-source-animalcro-project',
     ACL: 'public-read-write'
 };
 const storage =  s3Storage({
     Key: async (req, file, cb) => {
-        
-        let us_id = req.headers.us_id;
+        let us_id = req.body.us_id;
         let user_data = await User.findOne({
             raw: true,
             where: {us_id}
@@ -29,7 +27,7 @@ const storage =  s3Storage({
         let _type = us_thumbnail.split('.')[2];
         if(us_thumbnail.indexOf("/basic/") == -1) {
             let s3 = new AWS.S3();
-            let params = {  Bucket: 'deac-project', Key: `thumbnail/${us_id}.${_type}` };
+            let params = {  Bucket: 'web-source-animalcro-project', Key: `thumbnail/${us_id}.${_type}` };
             
             await s3.deleteObject(params, function(err, data) {
               if (err)  console.log(err, err.stack);

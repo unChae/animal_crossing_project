@@ -4,6 +4,7 @@
 
 // libs
 const bcrypt = require("bcrypt");
+const fs = require('fs');
 
 // modules
 const response = require("../../utils/u_res");
@@ -13,6 +14,7 @@ const models = require("../../models");
 const User = models.User;
 
 let email_access = async (req, res) => {
+    console.log("test");
     let hashed_access_token = req.params.hashed_access_token;
     let us_id = req.params.us_id;
   
@@ -28,7 +30,12 @@ let email_access = async (req, res) => {
         }, {
             where: { us_id: us_id }
         });
-        response(res, 200, true, '[완료]이메일 인증에 성공했습니다');
+        fs.readFile(__dirname + '/index.html', (err, data) => { // 파일 읽는 메소드
+            if (err) {
+              return console.error(err); // 에러 발생시 에러 기록하고 종료
+            }
+            res.end(data, 'utf-8'); // 브라우저로 전송
+         });
     } else {
         response(res, 409, false, '[에러]잘못된 접근입니다');
     }

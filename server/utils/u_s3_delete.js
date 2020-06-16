@@ -4,8 +4,9 @@ const AWS = require('aws-sdk');
 AWS.config.loadFromPath('./config/aws.json');
 const s3 = new AWS.S3();
 
-let delete_s3_folder = (bucketName, folder) => {
-    var params = {
+let delete_s3_folder = (folder) => {
+    let bucketName = "web-source-animalcro-project"
+    let params = {
         Bucket: bucketName,
         Prefix: 'images/' + folder + '/'
     };

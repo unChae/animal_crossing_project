@@ -24,7 +24,7 @@ let mailSender = {
                 from: 'Anicro.org',
                 to: param.toEmail, // 수신할 이메일
                 subject: param.subject, // 메일 제목
-                text: param.text // 메일 내용
+                html: param.text // 메일 내용
             };
         // 메일 발송    
         transporter.sendMail(mailOptions, (error, info) => {

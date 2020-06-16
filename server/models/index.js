@@ -42,8 +42,6 @@ db.Image.belongsTo(db.Board, {foreignKey: 'im_bo_id', targetKey: 'bo_id'});
 db.Likehate.belongsTo(db.User, {foreignKey: 'lh_us_id', targetKey: 'us_id'});
 db.Likehate.belongsTo(db.Board, {foreignKey: 'lh_bo_id', targetKey: 'bo_id'});
 
-db.Report.belongsTo(db.Blacklist, {foreignKey:'re_bl_id', targetKey: 'bl_id'});
-
 db.User.hasMany(db.Review, {foreignKey: 'rv_write_us_id', sourceKey: 'us_id'});
 
 db.Review.belongsTo(db.User, {foreignKey: 'rv_write_us_id', targetKey: 'us_id'});

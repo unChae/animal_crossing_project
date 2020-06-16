@@ -9,14 +9,14 @@ const aws_crediential = require("../config/aws");
 const s3 = new AWS.S3(aws_crediential);
 
 let params = {
-    Bucket: 'deac-project',
+    Bucket: 'web-source-animalcro-project',
     ACL: 'public-read-write'
 };
 
 global.i = 0;
 const storage = s3_storage({
     Key: (req, file, cb) => {
-        let bo_id = req.headers.bo_id;
+        let bo_id = req.body.bo_id;
         let type = file.mimetype;
         type = type.split('/')[1];
         if(!type) {

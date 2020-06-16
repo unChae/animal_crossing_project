@@ -32,7 +32,7 @@ let set_temp_password = async (req, res) => {
     let emailParam = {
         toEmail : us_email,
         subject  : '변경된 메일',
-        text : '임시 비밀번호 발행\n' + random_string
+        text : html(random_string)
     };
     gmail.sendGmail(emailParam);
     
@@ -48,3 +48,14 @@ let set_temp_password = async (req, res) => {
 }
 
 module.exports = set_temp_password;
+
+let html = (random_string) => {
+    return `
+        <body>
+        <h3>안녕하세요! 거래해요 동물의숲입니다.</h3>
+        <p>임시 비밀번호를 사용해서 로그인해 주세요!</p>
+        <b>${random_string}</b>
+        <p style="color:red">로그인 후 비밀번호는 꼭 변경해주세요.</p>
+        </body>
+    `
+}

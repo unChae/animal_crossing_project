@@ -18,7 +18,7 @@ let get_trade_data = async (req, res) => {
     let {us_id, bo_trade_value} = req.query;
     if(bo_trade_value == 1) {
         let board = await Board.findAll({
-            where: {bo_us_id: us_id, bo_trade_value}
+            where: {bo_us_id: us_id}
         })
 
         response(res, 200, true, "[완료]거래했던 내역 반환", board);
@@ -68,19 +68,18 @@ let get_data = async (res, us_id, bo_trade_value) => {
             } else {
                 board = await Board.findOne({
                     raw: true,
-                    where: {bo_id: bo_id[i]}
+                    where: {bo_id: bo_id[i], bo_trade_value: 1, bo_trade_value: 2}
                 })          
             }
-            let room = Room.findOne({
+            let room = await Room.findOne({
                 where: {ro_bo_id: bo_id[i], ro_us_id: us_id, ro_trade_status: 5}
             })
             if(room) {
                 result.push(board);
             }
         }
-        // console.log("result: ", result);
         
-        if(result[1] == null) {
+        if(result.length < 1 || result[0] == null) {
             result = [];
         }
         response(res, 200, true, "[완료]거래했던 내역 반환", result);

@@ -60,7 +60,7 @@ let delete_user = async (req, res) => {
         where: {us_id}
     })
     let us_thumbnail = user.us_thumbnail.split("/").reverse()[0];
-    let params = {  Bucket: 'deac-project', Key: `thumbnail/${us_thumbnail}` };
+    let params = {  Bucket: 'web-source-animalcro-project', Key: `thumbnail/${us_thumbnail}` };
             
     await s3.deleteObject(params, function(err, data) {
         if (err)  console.log(err, err.stack);
@@ -129,7 +129,7 @@ let remove_board = async (us_id) => {
             })
         
             if(image.length) {
-                delete_s3_folder("deac-project", bo_id);
+                delete_s3_folder(bo_id);
             }
             
             await Image.destroy({

@@ -14,7 +14,7 @@ let delete_room = async (us_id, ro_id) => {
     })
     
     if(room.ro_exit) {
-        Chat.destroy({
+        await Chat.destroy({
             where: {ch_ro_id: ro_id}
         })
         Room.destroy({

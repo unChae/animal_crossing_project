@@ -39,7 +39,7 @@ let register = async (req, res) => {
             us_islandname,
             us_island_selector,
             us_code,
-            us_thumbnail: `https://deac-project.s3.ap-northeast-2.amazonaws.com/thumbnail/basic/${thumbnail_random}.png`,
+            us_thumbnail: `https://web-source-animalcro-project.s3.ap-northeast-2.amazonaws.com/thumbnail/basic/${thumbnail_random}.png`,
             us_access_token
         });
         // 승인 이메일 전송
@@ -54,7 +54,7 @@ let register = async (req, res) => {
             let emailParam = {
                 toEmail : user.us_email,
                 subject  : '인증 메일',
-                text : 'https://server.anicro.org/auth/access/' + hashed_us_access_token.replace(/\//g, "slash") + '/' + user.us_id
+                text : html(hashed_us_access_token.replace(/\//g, "slash"), user.us_id )
             };
             gmail.sendGmail(emailParam);
         } catch (error) {
@@ -68,3 +68,13 @@ let register = async (req, res) => {
 }
 
 module.exports = register;
+
+let html = (token, us_id) => {
+    return `
+        <body>
+        <h3>안녕하세요! 거래해요 동물의숲입니다.</h3>
+        <p>아래 링크를 눌러 계정 인증을 진행해 주세요.</p>
+        <a href="https://develop.animalcro.com/auth/access/${token}/${us_id}">이메일 인증</a>
+        </body>
+    `
+}
