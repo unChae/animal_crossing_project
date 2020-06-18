@@ -69,8 +69,8 @@ module.exports = (sequelize, DataTypes) => {
                     msg: "가격은 숫자만 입력가능합니다."  
                 },
                 len: {
-                    args: [1, 5],
-                    msg: "가격은 5자리까지 입력 가능합니다."
+                    args: [1, 3],
+                    msg: "가격은 3자리까지 입력 가능합니다."
                 }
             },
         },
