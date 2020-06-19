@@ -21,7 +21,11 @@ module.exports = (router) => {
     // 임시 비밀번호 발행
     router.get('/set_temp_password', ctrl.set_temp_password);
     
+    // 비밀번호 변경
     router.post('/update_password', ctrl.update_password);
+    
+    // 중복 이메일 검사
+    router.get('/email_check', ctrl.email_check);
     
     return router;
 };

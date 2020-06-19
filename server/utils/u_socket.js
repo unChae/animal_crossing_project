@@ -423,7 +423,12 @@ let socket = (io) => {
         let get_message = async (us_id, ro_id, socket_id) => {
             // 구매자 & 판매자 us_id 값 받아옴
             let ro_data = await ctrl.get_ro_data(ro_id);
-            
+            let bo_data = await ctrl.get_board_data(ro_data.ro_bo_id);
+            let bo_trade_status = null;
+            if(bo_data) {
+                bo_trade_status = bo_data.bo_trade_status;
+            }
+
             let buy_us_id = ro_data.ro_us_id;
             let seller_us_id = await ctrl.get_us_id(buy_us_id, ro_id);
             
@@ -455,7 +460,8 @@ let socket = (io) => {
                     ro_bo_title,
                     ro_exit,
                     us_grant,
-                    us_nickname
+                    us_nickname,
+                    bo_trade_status
                 }
                 // 프론트로 데이터 전송
                 io.to(socket_id).emit('get_message', result);

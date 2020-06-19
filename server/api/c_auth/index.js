@@ -18,3 +18,6 @@ exports.set_temp_password = set_temp_password;
 
 const update_password = require("./update_password");
 exports.update_password = update_password;
+
+const email_check = require("./email_check");
+exports.email_check = email_check;
